@@ -1,0 +1,25 @@
+name: "Pre-Release Build"
+
+on:
+  push:
+    branches:
+      - main
+
+permissions:
+  contents: read
+
+jobs:
+  pre-release:
+    name: "Pre-Release Build"
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: "Github Release"
+        uses: softprops/action-gh-release@v2
+        with:
+          prerelease: true
+          tag_name: pre-release
+          body: ${{ github.event.head_commit.message }}
