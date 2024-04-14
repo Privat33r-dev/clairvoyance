@@ -4,6 +4,8 @@ on:
   push:
     tags:
       - 'v[0-9]+.[0-9]+.[0-9]+'
+    branches:
+      - main
 
 permissions:
   contents: read
@@ -17,7 +19,7 @@ jobs:
 
     steps:
       - uses: actions/checkout@v3
-      - uses: softprops/action-gh-release@v1
+      - uses: softprops/action-gh-release@v2
 
   pypi-push:
     runs-on: ubuntu-latest
