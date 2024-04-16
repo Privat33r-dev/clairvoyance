@@ -22,4 +22,5 @@ jobs:
         with:
           prerelease: true
           tag_name: pre-release
+          name: "Development Build"
           body: ${{ github.event.head_commit.message }}
