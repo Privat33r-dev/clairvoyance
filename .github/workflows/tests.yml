@@ -32,17 +32,8 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-      - name: Install and configure poetry
-        run: |
-          pipx install poetry
-          poetry config virtualenvs.in-project true
-      - name: Setup Python
-        uses: actions/setup-python@v5
-        with:
-          python-version: ${{ env.PYTHON_VERSION }}
-          cache: "poetry"
-      - name: Setup poetry
-        run: poetry install
+      - name: Install and resolve poetry dependencies
+        uses: Privat33r-dev/pymonster@v1
       - name: Run tests
         run: |
           source .venv/bin/activate
@@ -53,17 +44,8 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-      - name: Install and configure poetry
-        run: |
-          pipx install poetry
-          poetry config virtualenvs.in-project true
-      - name: Setup Python
-        uses: actions/setup-python@v5
-        with:
-          python-version: ${{ env.PYTHON_VERSION }}
-          cache: "poetry"
-      - name: Setup poetry
-        run: poetry install
+      - name: Install and resolve poetry dependencies
+        uses: Privat33r-dev/pymonster@v1
       - uses: actions/setup-node@v4
         with:
           node-version: ${{ env.NODE_VERSION }}
