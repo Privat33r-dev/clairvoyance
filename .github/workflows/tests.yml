@@ -33,7 +33,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Install python and resolve poetry dependencies
+      - name: Setup Python ${{ env.PYTHON_VERSION }} and resolve Poetry dependencies
         uses: Privat33r-dev/pymonster@master
         with:
           python-version: ${{ env.PYTHON_VERSION }}
@@ -49,7 +49,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Install python and resolve poetry dependencies
+      - name: Setup Python ${{ env.PYTHON_VERSION }} and resolve Poetry dependencies
         uses: Privat33r-dev/pymonster@master
         with:
           python-version: ${{ env.PYTHON_VERSION }}
@@ -93,7 +93,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Install python and resolve poetry dependencies
+      - name: Setup Python ${{ env.PYTHON_VERSION }} and resolve Poetry dependencies
         uses: Privat33r-dev/pymonster@master
         with:
           python-version: ${{ env.PYTHON_VERSION }}
