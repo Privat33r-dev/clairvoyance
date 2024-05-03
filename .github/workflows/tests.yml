@@ -32,8 +32,10 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-      - name: Install and resolve poetry dependencies
+      - name: Install python and resolve poetry dependencies
         uses: Privat33r-dev/pymonster@master
+        with:
+          python-version: ${{ env.PYTHON_VERSION }}
       - name: Run tests
         run: |
           source .venv/bin/activate
@@ -44,8 +46,10 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-      - name: Install and resolve poetry dependencies
+      - name: Install python and resolve poetry dependencies
         uses: Privat33r-dev/pymonster@master
+        with:
+          python-version: ${{ env.PYTHON_VERSION }}
       - uses: actions/setup-node@v4
         with:
           node-version: ${{ env.NODE_VERSION }}
@@ -78,21 +82,13 @@ jobs:
   lint:
     runs-on: ubuntu-latest
 
-    if: false
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-      - name: Install and configure poetry
-        run: |
-          pipx install poetry
-          poetry config virtualenvs.in-project true
-      - name: Setup Python
-        uses: actions/setup-python@v5
+      - name: Install python and resolve poetry dependencies
+        uses: Privat33r-dev/pymonster@master
         with:
           python-version: ${{ env.PYTHON_VERSION }}
-          cache: "poetry"
-      - name: Setup poetry
-        run: poetry install
       - name: Run lint
         if: always()
         run: |
