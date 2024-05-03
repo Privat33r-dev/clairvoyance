@@ -33,7 +33,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
       - name: Install and resolve poetry dependencies
-        uses: Privat33r-dev/pymonster@v1
+        uses: Privat33r-dev/pymonster@v0
       - name: Run tests
         run: |
           source .venv/bin/activate
@@ -45,7 +45,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
       - name: Install and resolve poetry dependencies
-        uses: Privat33r-dev/pymonster@v1
+        uses: Privat33r-dev/pymonster@v0
       - uses: actions/setup-node@v4
         with:
           node-version: ${{ env.NODE_VERSION }}
