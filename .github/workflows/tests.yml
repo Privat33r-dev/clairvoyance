@@ -57,13 +57,13 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: ${{ env.NODE_VERSION }}
-          cache: "npm"
+          cache: "pnpm"
           cache-dependency-path: tests/apollo-server/
 
       - name: Install deps and run server
         run: |
           cd tests/apollo-server/
-          npm ci
+          pnpm install
           node src/index.js &
 
       - name: Wait for server
