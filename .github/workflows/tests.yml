@@ -32,10 +32,12 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+
       - name: Install python and resolve poetry dependencies
         uses: Privat33r-dev/pymonster@master
         with:
           python-version: ${{ env.PYTHON_VERSION }}
+
       - name: Run tests
         run: |
           source .venv/bin/activate
@@ -46,20 +48,24 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+
       - name: Install python and resolve poetry dependencies
         uses: Privat33r-dev/pymonster@master
         with:
           python-version: ${{ env.PYTHON_VERSION }}
+
       - uses: actions/setup-node@v4
         with:
           node-version: ${{ env.NODE_VERSION }}
           cache: "npm"
           cache-dependency-path: tests/apollo-server/
+
       - name: Install deps and run server
         run: |
           cd tests/apollo-server/
           npm ci
           node src/index.js &
+
       - name: Wait for server
         run: |
           for i in {0..10}; do
@@ -74,6 +80,7 @@ jobs:
               exit 1
             fi
           done
+
       - name: Test with pytest
         run: |
           source .venv/bin/activate
