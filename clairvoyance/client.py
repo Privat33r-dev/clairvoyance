@@ -59,8 +59,7 @@ class Client(IClient):  # pylint: disable=too-many-instance-attributes
                 )
 
                 if response.status >= 500:
-                    log().warning(f"Received status code {response.status}")
-                    return await self.post(document, retries + 1)
+                    response.raise_for_status()
 
                 try:
                     return await response.json(content_type=None)
@@ -74,6 +73,8 @@ class Client(IClient):  # pylint: disable=too-many-instance-attributes
                         "https://github.com/nikitastupin/clairvoyance/blob/main/troubleshooting.md for more information."
                     )
 
+            except aiohttp.ClientResponseError as e:
+                log().warning(f"Received status code {e.status}")
             except (
                 aiohttp.ClientConnectionError,
                 aiohttp.ClientPayloadError,
